@@ -39,7 +39,6 @@ function wml_actions.multihex_image(cfg)
 	if not cfg.image then
 		wml.error "[multihex_image] missing required image= attribute."
 	end
-	cfg.image = cfg.image.."~NO_TOD_SHIFT()"
 	for i, loc in ipairs(locs) do
 		add_overlay(loc[1], loc[2], cfg)
 
