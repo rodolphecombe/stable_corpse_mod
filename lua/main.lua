@@ -36,18 +36,29 @@ end
 function wml_actions.multihex_image(cfg)
 	local locs = wesnoth.map.find(cfg)
 	cfg = wml.parsed(cfg)
-	if not cfg.image and not cfg.halo then
+	if not cfg.image then
 		wml.error "[multihex_image] missing required image= attribute."
 	end
+	cfg.image = cfg.image.."~NO_TOD_SHIFT()"
 	for i, loc in ipairs(locs) do
 		add_overlay(loc[1], loc[2], cfg)
 
 		local width, height = filesystem.image_size(cfg.image)
 		if width<=72 and height <=72 then else
-			local nw_hex, sw_hex, s_hex, se_hex, ne_hex, n_hex
-			wml.tag.store_locations { wml.tag.filter_adjacent_location {x = loc[1], y = loc[2], adjacent = "se"}, variable = nw_hex}
-			if nw_hex == nil then wesnoth.interface.add_chat_message("nw_hex is nil") end
-			wesnoth.interface.add_chat_message(wesnoth.as_text(nw_hex))
+			local n_hex, ne_hex, se_hex, s_hex, sw_hex, nw_hex = wesnoth.map.get_adjacent_hexes(loc)
+			local ref_image = cfg.image
+			cfg.image = "misc/blank-hex.png~BLIT("..ref_image.."~CROP("..tostring(width/2-36)..",0,72,"..tostring(height/2-36).."),0,"..tostring(72-(height/2-36))
+			add_overlay(n_hex[1], n_hex[2], cfg)
+			cfg.image = "misc/blank-hex.png~BLIT("..ref_image.."~CROP("..tostring(width/2+18)..","..tostring(math.max(0,height/2-72))..","..tostring(width/2-18)..","..tostring(height/2).."),0,"..tostring(math.max(0,72-height/2))
+			add_overlay(ne_hex[1], ne_hex[2], cfg)
+			cfg.image = "misc/blank-hex.png~BLIT("..ref_image.."~CROP("..tostring(width/2+18)..","..tostring(height/2)..","..tostring(width/2-18)..","..tostring(math.min(height/2,72)).."),0,0)"
+			add_overlay(se_hex[1], se_hex[2], cfg)
+			cfg.image = "misc/blank-hex.png~BLIT("..ref_image.."~CROP("..tostring(width/2-36)..","..tostring(height/2+36)..",72,"..tostring(height/2-36).."),0,0)"
+			add_overlay(s_hex[1], s_hex[2], cfg)
+			cfg.image = "misc/blank-hex.png~BLIT("..ref_image.."~CROP(0,"..tostring(height/2)..","..tostring(width/2-18)..","..tostring(math.min(height/2,72)).."),"..tostring(72-(width/2-18))..",0)"
+			add_overlay(sw_hex[1], sw_hex[2], cfg)
+			cfg.image = "misc/blank-hex.png~BLIT("..ref_image.."~CROP(0,"..tostring(math.max(0,height/2-72))..","..tostring(width/2-18)..","..tostring(math.min(height/2,72)).."),"..tostring(72-(width/2-18))..","..tostring(math.max(0,72-height/2))
+			add_overlay(nw_hex[1], nw_hex[2], cfg)
 		end 
 	end
 
