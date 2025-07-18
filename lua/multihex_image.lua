@@ -27,16 +27,13 @@ function wesnoth.wml_actions.multihex_image(cfg)
 		local c_hex = wesnoth.map.get(loc)  
 		local n_hex, ne_hex, se_hex, s_hex, sw_hex, nw_hex = wesnoth.map.get_adjacent_hexes(loc)
 
+		set_hex_image(c_hex,width/2-36,height/2-36,72,72)
 		set_hex_image(ne_hex, width/2 + 18, math.max(0, height/2 - 72), width/2 - 18, height/2, 0, math.max(0, 72 - height/2))
 		set_hex_image(nw_hex, 0, math.max(0, height/2 - 72), width/2 - 18, math.min(height/2, 72), 72 - (width/2 - 18), math.max(0, 72 - height/2))
-		if height>72 then
-			set_hex_image(n_hex,width/2-36,0,72,height/2-36,0,108-height/2)
-		end
-
-		set_hex_image(c_hex,width/2-36,height/2-36,72,72)
 		set_hex_image(se_hex, width/2 + 18, height/2, width/2 - 18, math.min(height/2, 72))
 		set_hex_image(sw_hex, 0, height/2, width/2 - 18, math.min(height/2, 72), 72 - (width/2 - 18))
 		if height>72 then
+			set_hex_image(n_hex,width/2-36,0,72,height/2-36,0,108-height/2)
 			set_hex_image(s_hex, width/2-36, height/2+36, 72, height/2-36)
 		end
 	end

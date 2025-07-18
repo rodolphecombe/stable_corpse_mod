@@ -8,3 +8,6 @@ Orientation of the corpse depends on the orientation of the unit when it dies.
 2.0 
 Added death animation for Cuttle Fish, Fire Guardian, Fire Wraith, Giant Mudcrawler and Mudcrawler
 Added flames and ash pile for most units when they burn.
+
+2.1
+Added submersion of multi-hex images
