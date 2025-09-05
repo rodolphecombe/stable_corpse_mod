@@ -36,6 +36,21 @@ function wesnoth.wml_actions.multihex_image(cfg)
 			set_hex_image(n_hex,width/2-36,0,72,height/2-36,0,108-height/2)
 			set_hex_image(s_hex, width/2-36, height/2+36, 72, height/2-36)
 		end
+		if height>144 then
+			local nne_hex = ne_hex
+			nne_hex[2] = nne_hex[2]-1
+			local nnw_hex = nw_hex
+			nnw_hex[2] = nnw_hex[2]-1
+			local sse_hex = se_hex
+			sse_hex[2] = sse_hex[2]+1
+			local ssw_hex = sw_hex
+			ssw_hex[2] = ssw_hex[2]+1
+			set_hex_image(nne_hex, width/2 + 18, math.max(0, height/2 - 144), width/2 - 18, height/2, 0, math.max(0, 144 - height/2))
+			set_hex_image(nnw_hex, 0, math.max(0, height/2 - 144), width/2 - 18, math.min(height/2, 144), 72 - (width/2 - 18), math.max(0, 144 - height/2))
+			set_hex_image(sse_hex, width/2 + 18, height/2+72, width/2 - 18, math.min(height/2, 72))
+			set_hex_image(ssw_hex, 0, height/2+72, width/2 - 18, math.min(height/2, 72), 72 - (width/2 - 18))
+		end
+
 	end
 
 	if redraw then 
