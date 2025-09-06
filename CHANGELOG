@@ -13,7 +13,13 @@ Added flames and ash pile for most units when they burn.
 Added submersion of multi-hex images
 
 3.0
+
 Added tooglable blood mode with pools of blood created at death of units. 
 
 4.0
 Added tooglable burial procedure: corpse can now be buried by moving an unit onto them
+
+4.1
+Fix Troll Whelp not getting a gravestone
+Movement not undoable anymore when burial is triggered
+Fix grave being dug over bridges
