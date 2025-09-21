@@ -12,13 +12,16 @@ Added flames and ash pile for most units when they burn.
 2.1
 Added submersion of multi-hex images
 
-<<<<<<< Updated upstream
 3.0
 Added tooglable blood mode with pools of blood created at death of units. 
 
 4.0
 Added tooglable burial procedure: corpse can now be buried by moving an unit onto them
-=======
+
 4.1
 Fix Troll Whelp not getting a gravestone
->>>>>>> Stashed changes
+
+5.0
+Added option for low-quality corpses for most units with no death animation
+Added saurian corpses
+Fixed male Elvish Archer no spawning corpses.
