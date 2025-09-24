@@ -24,4 +24,7 @@ Fix Troll Whelp not getting a gravestone
 5.0
 Added option for low-quality corpses for most units with no death animation
 Added saurian corpses
-Fixed male Elvish Archer no spawning corpses.
+Fixed male Elvish Archer not spawning corpses.
+
+6.0 
+Added user-defined disappearance of the remains.
