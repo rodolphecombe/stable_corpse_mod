@@ -28,3 +28,4 @@ Fix grave being dug over bridges
 Added option for low-quality corpses for most units with no death animation
 Added saurian corpses
 Fixed male Elvish Archer not spawning corpses
+Added user-defined disappearance of the remains.
